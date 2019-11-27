@@ -1,5 +1,5 @@
 {
-  "name": "execute",
+  "name": "@getvim/execute",
   "version": "0.9.0",
   "description": "Extremely opinionated Bash execution from Node.js",
   "main": "index.js",
