@@ -1,0 +1,22 @@
+{
+  "name": "execute",
+  "version": "0.9.0",
+  "description": "Extremely opinionated Bash execution from Node.js",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bookmd/execute.git"
+  },
+  "keywords": [
+    "Bash",
+    "Shell",
+    "Process"
+  ],
+  "author": "Yuval Peled",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bookmd/execute/issues"
+  },
+  "homepage": "https://github.com/bookmd/execute#readme"
+}
