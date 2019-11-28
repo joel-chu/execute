@@ -9,8 +9,9 @@ function execute(command, options) {
     return new Promise((resolve, reject) => {
         const safeCommand = `set -euo pipefail\n${command}`;
         childProcess.exec(safeCommand, { shell: '/bin/bash', env }, (error, stdout, stderr) => {
-            if (error) reject({ ...error, stderr: removeFinalNewline(stderr) });
-            else resolve(removeFinalNewline(stdout));
+            const formattedStdout = removeFinalNewline(stdout);
+            if (error) reject({ ...error, stdout: formattedStdout, stderr: removeFinalNewline(stderr) });
+            else resolve(formattedStdout);
         })
     })
 }
