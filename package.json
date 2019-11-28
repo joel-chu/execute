@@ -3,7 +3,9 @@
   "version": "0.10.0",
   "description": "Extremely opinionated Bash execution from Node.js",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha ./tests/*"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bookmd/execute.git"
@@ -18,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/bookmd/execute/issues"
   },
-  "homepage": "https://github.com/bookmd/execute#readme"
+  "homepage": "https://github.com/bookmd/execute#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.2.2"
+  }
 }
