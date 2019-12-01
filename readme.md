@@ -134,5 +134,5 @@ const execute = require('./index');
 const pipe = execute.pipe;
 execute('wc -l file.txt')
     .then(lineCount => lineCount > 0 ? "Success" : "Failure")
-    .pipe("tee SomeFile.txt")
+    .then(pipe("tee SomeFile.txt"))
 ```
