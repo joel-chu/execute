@@ -16,22 +16,21 @@ yarn add @getvim/execute
 ```
 ### Basic usage
 ```javascript
-const execute = require('@getvim/execute');
+const { execute } = require('@getvim/execute');
 execute('ls')
     .then(console.log); // result: "feature.js\nfeature.spec.js"
 ```
 ### Environment variables
 ```javascript
-const execute = require('@getvim/execute');
+const { execute } = require('@getvim/execute');
 execute('echo $MY_NAME', { env: { MY_NAME: 'Jake Chambers' } })
     .then(console.log); // result: "Jake Chambers"
 ```
 ### Piping
 Piping allows you to interleave shell commands with modern JS features that are safer and easier to use than a lot of shell alternatives like using external modules, concurrency, loops or string formatters.
 ```javascript
-const execute = require('@getvim/execute');
+const { execute, pipe } = require('@getvim/execute');
 const mailer = require('@fictional/mail-client')
-const pipe = execute.pipe;
 execute('ls | grep temp')
     .then(tempFiles => {
         mailer('admin@website.com', 'Temp files being deleted', tempFiles);
@@ -41,7 +40,7 @@ execute('ls | grep temp')
 ```
 ### Errors
 ```javascript
-const execute = require('@getvim/execute');
+const { execute } = require('@getvim/execute');
 execute('npm install')
     .then(() => execute('npm test')) // Has a failing test
     .then(() => execute('npm publish'))
@@ -104,8 +103,7 @@ echo $STRING | awk -v N=$N '{print $N}' # You have to learn awk or other tools
 **Solution:**
 Usage of execute.pipe allows to easily jump between a Bash context and a JS context.
 ```javascript
-const execute = require('./index');
-const pipe = execute.pipe;
+const { execute, pipe } = require('./index');
 const N = 5;
 execute('echo $STRING', { env: { STRING:'My name is inigo Montoya'}})
     .then(result => result.split(' ')[N - 1])
@@ -130,8 +128,7 @@ if (( $VAR > 0 )); then ... # Confusingly, this also works...
 **Solution:**
 Execute allows to easily jump between a Bash context and a JS context.
 ```javascript
-const execute = require('./index');
-const pipe = execute.pipe;
+const { execute, pipe } = require('./index');
 execute('wc -l file.txt')
     .then(lineCount => lineCount > 0 ? "Success" : "Failure")
     .then(pipe("tee SomeFile.txt"))
