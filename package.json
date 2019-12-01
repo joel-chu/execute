@@ -9,6 +9,9 @@
     "test": "mocha ./tests/*",
     "clean": "rm -rf ./built/"
   },
+  "files": [
+    "built/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bookmd/execute.git"
