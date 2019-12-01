@@ -4,8 +4,7 @@ chai.should();
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
-const execute = require('../index');
-const pipe = execute.pipe;
+const { execute, pipe } = require('../built');
 
 describe('# execute tests', () => {
     describe('# Usages without errors', () => {

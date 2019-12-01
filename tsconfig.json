@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "target": "es5",
+    "strict": true,
+    "noImplicitReturns": true,
+    "noEmitOnError": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

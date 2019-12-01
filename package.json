@@ -2,10 +2,16 @@
   "name": "@getvim/execute",
   "version": "0.11.0",
   "description": "Extremely opinionated Bash execution from Node.js",
-  "main": "index.js",
+  "main": "built/index.js",
+  "types": "built/index.d.ts",
   "scripts": {
-    "test": "mocha ./tests/*"
+    "build": "tsc",
+    "test": "mocha ./tests/*",
+    "clean": "rm -rf ./built/"
   },
+  "files": [
+    "built/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bookmd/execute.git"
@@ -22,8 +28,10 @@
   },
   "homepage": "https://github.com/bookmd/execute#readme",
   "devDependencies": {
+    "@types/node": "^12.12.14",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.2",
+    "typescript": "^3.7.2"
   }
 }
