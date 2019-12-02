@@ -45,7 +45,8 @@ execute('npm install')
     .then(() => execute('npm test')) // Has a failing test
     .then(() => execute('npm publish'))
     .catch(error => console.error('Failed CI/CD!', error));
-    /* result: 
+    /* result:
+        Failed CI/CD! 
         { 
             killed: false, 
             code: 1, 
@@ -84,6 +85,9 @@ Any command run with execute will be run with the [set -e](https://www.tldp.org/
 ```shell script
 failingCommand | echo "a" # failingCommand does not throw an error because it's in a pipe
 echo "b"
+# result:
+# a
+# b
 ```
 **Solution:**
 Any command run with execute will be run with the [set -o pipefail](https://www.tldp.org/LDP/abs/html/options.html) flag and the script will immediately exit with a Promise rejection on any command in a pipe chain that returns a non zero exit code.
@@ -103,9 +107,9 @@ echo $STRING | awk -v N=$N '{print $N}' # You have to learn awk or other tools
 **Solution:**
 Usage of execute.pipe allows to easily jump between a Bash context and a JS context.
 ```javascript
-const { execute, pipe } = require('./index');
+const { execute, pipe } = require('@getvim/execute');
 const N = 5;
-execute('echo $STRING', { env: { STRING:'My name is inigo Montoya'}})
+execute('echo $STRING', { env: { STRING:'My name is Inigo Montoya'}})
     .then(result => result.split(' ')[N - 1])
     .then(pipe('rev'))
     .then(console.log); // Result: "ayotnoM"
@@ -128,7 +132,7 @@ if (( $VAR > 0 )); then ... # Confusingly, this also works...
 **Solution:**
 Execute allows to easily jump between a Bash context and a JS context.
 ```javascript
-const { execute, pipe } = require('./index');
+const { execute, pipe } = require('@getvim/execute');
 execute('wc -l file.txt')
     .then(lineCount => lineCount > 0 ? "Success" : "Failure")
     .then(pipe("tee SomeFile.txt"))
